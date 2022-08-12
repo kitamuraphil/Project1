@@ -14,6 +14,8 @@ from flask_wtf import Form
 from forms import *
 from flask_migrate import Migrate
 import config
+import collections
+collections.Callable = collections.abc.Callable
 #----------------------------------------------------------------------------#
 # App Config.
 #----------------------------------------------------------------------------#
@@ -508,6 +510,7 @@ def create_artist_submission():
    return render_template('pages/home.html')
 
 
+
 @app.route('/artist/<int:artist_id>', methods=['DELETE'])
 def delete_artist(artist_id):
   try:
@@ -577,6 +580,7 @@ def create_show_submission():
   # e.g., flash('An error occurred. Show could not be listed.')
   # see: http://flask.pocoo.org/docs/1.0/patterns/flashing/
       return render_template('pages/home.html')
+
 
 @app.errorhandler(404)
 def not_found_error(error):
