@@ -29,7 +29,7 @@ migrate = Migrate(app, db)
 
 # TODO: connect to a local postgresql database
 
-app.config['SQLALCHEMY_DATABASE_URI'] = config.SQLALCHEMY_DATABASE_URI
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:root@localhost:5432/app'
 
 #----------------------------------------------------------------------------#
 # Models.
@@ -584,7 +584,7 @@ def create_show_submission():
 
 @app.errorhandler(404)
 def not_found_error(error):
-    return render_template('errors/404.html'), 404
+ return render_template('errors/404.html'), 404
 
 @app.errorhandler(500)
 def server_error(error):
